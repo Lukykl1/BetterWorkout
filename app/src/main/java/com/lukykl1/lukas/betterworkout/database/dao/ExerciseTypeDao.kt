@@ -1,9 +1,8 @@
-package com.lukykl1.lukas.betterworkout.database
+package com.lukykl1.lukas.betterworkout.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
 import androidx.room.Query
+import com.lukykl1.lukas.betterworkout.database.models.ExerciseType
 
 @Dao
 interface ExerciseTypeDao : BaseDao<ExerciseType> {

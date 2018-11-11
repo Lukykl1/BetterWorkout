@@ -1,4 +1,4 @@
-package com.lukykl1.lukas.betterworkout.database
+package com.lukykl1.lukas.betterworkout.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

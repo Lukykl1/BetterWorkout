@@ -1,4 +1,4 @@
-package com.lukykl1.lukas.betterworkout.database
+package com.lukykl1.lukas.betterworkout.database.dao
 
 import androidx.room.Dao
 import androidx.room.Delete

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lukykl1.lukas.betterworkout.database.Exercise
+import com.lukykl1.lukas.betterworkout.database.models.Exercise
 import com.lukykl1.lukas.betterworkout.viewmodel.ExerciseViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -47,7 +47,12 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == newExerciseActivityRequestCode && resultCode == Activity.RESULT_OK) {
             data?.let {
-                val exercise = Exercise(0, it.getStringExtra(NewExerciseActivity.EXTRA_REPLY), null)
+                val exercise = Exercise(
+                    0,
+                    it.getStringExtra(NewExerciseActivity.EXTRA_REPLY),
+                    0,
+                    null
+                )
                 exerciseViewModel.insert(exercise)
             }
         } else {

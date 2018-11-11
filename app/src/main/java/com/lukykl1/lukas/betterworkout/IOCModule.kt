@@ -2,9 +2,7 @@ package com.lukykl1.lukas.betterworkout
 
 import androidx.room.Room
 import com.lukykl1.lukas.betterworkout.database.AppDatabase
-import com.lukykl1.lukas.betterworkout.database.ExerciseDao
 import com.lukykl1.lukas.betterworkout.repository.ExerciseRepository
-import com.lukykl1.lukas.betterworkout.repository.IExerciseRepository
 import com.lukykl1.lukas.betterworkout.viewmodel.ExerciseViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.ext.koin.viewModel
@@ -16,7 +14,7 @@ val IOCModule = module {
             .build()
     }
     single {
-        get<AppDatabase>().excerciseDao()
+        get<AppDatabase>().exerciseDao()
     }
     single {
         ExerciseRepository(get())

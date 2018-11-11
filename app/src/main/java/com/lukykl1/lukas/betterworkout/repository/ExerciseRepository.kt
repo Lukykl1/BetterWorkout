@@ -1,10 +1,9 @@
 package com.lukykl1.lukas.betterworkout.repository
 
-import android.os.AsyncTask
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import com.lukykl1.lukas.betterworkout.database.Exercise
-import com.lukykl1.lukas.betterworkout.database.ExerciseDao
+import com.lukykl1.lukas.betterworkout.database.dao.ExerciseDao
+import com.lukykl1.lukas.betterworkout.database.models.Exercise
 
 
 interface IExerciseRepository {

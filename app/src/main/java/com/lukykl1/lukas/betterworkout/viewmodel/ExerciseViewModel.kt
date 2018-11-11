@@ -2,10 +2,10 @@ package com.lukykl1.lukas.betterworkout.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.lukykl1.lukas.betterworkout.database.Exercise
+import com.lukykl1.lukas.betterworkout.database.models.Exercise
 import com.lukykl1.lukas.betterworkout.repository.ExerciseRepository
-import com.lukykl1.lukas.betterworkout.repository.IExerciseRepository
-import kotlinx.coroutines.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ExerciseViewModel(private val repository: ExerciseRepository) : ViewModel() {
 
