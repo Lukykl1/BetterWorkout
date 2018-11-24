@@ -20,4 +20,7 @@ interface ExerciseDao : BaseDao<Exercise> {
     @Query("SELECT * FROM exercise WHERE name LIKE :name LIMIT 1")
     fun findByName(name: String): Exercise
 
+    @Query("SELECT * FROM exercise WHERE workoutId LIKE :workoutId")
+    fun getAllForWorkout(workoutId: Long): LiveData<List<Exercise>>
+
 }

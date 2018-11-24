@@ -10,7 +10,7 @@ import com.lukykl1.lukas.betterworkout.database.models.Set
 
 @Database(
     entities = [Category::class, Exercise::class, ExerciseType::class, Set::class, SuperSetExercise::class, Workout::class],
-    version = 1
+    version = 4
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -21,3 +21,4 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun superSetExerciseDao(): SuperSetExerciseDao
     abstract fun workoutDao(): WorkoutDao
 }
+

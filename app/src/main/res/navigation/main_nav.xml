@@ -3,11 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@+id/home_dest">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.lukykl1.lukas.betterworkout.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/home_dest"
+        android:name="com.lukykl1.lukas.betterworkout.WorkoutListFragment"
+        android:label="@string/home"
+        tools:layout="@layout/workout_list_fragment">
+
+        <action
+            android:id="@+id/action_home_dest_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseListFragment"
+        android:name="com.lukykl1.lukas.betterworkout.ExerciseListFragment"
+        android:label="exercise_list_fragment"
+        tools:layout="@layout/exercise_list_fragment">
+        <argument
+            android:name="WorkoutId"
+            app:argType="long" />
+    </fragment>
 </navigation>

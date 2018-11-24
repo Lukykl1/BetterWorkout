@@ -10,8 +10,13 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-</resources>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/home_dest"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+    <!--<item
+        android:id="@id/deeplink_dest"
+        android:icon="@drawable/ic_android"
+        android:title="@string/deeplink" />-->
+</menu>

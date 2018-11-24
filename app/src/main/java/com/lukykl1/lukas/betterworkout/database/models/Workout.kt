@@ -9,7 +9,6 @@ import java.util.*
 data class Workout(
     @PrimaryKey(autoGenerate = true) var uid: Int,
     @ColumnInfo(name = "name") var name: String,
-    @ColumnInfo(name = "start") var start: Date?,
+    @ColumnInfo(name = "start") var start: Date,
     @ColumnInfo(name = "end") var end: Date?
-
 )

@@ -3,4 +3,5 @@
     <string name="hint_word">Exercise…</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Exercise not saved because it is empty.</string>
+    <string name="home">home</string>
 </resources>

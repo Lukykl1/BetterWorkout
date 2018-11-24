@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(
     foreignKeys = [(ForeignKey(
-        entity = ExerciseType::class,
+        entity = Exercise::class,
         parentColumns = ["uid"],
         childColumns = ["exerciseId"]
     ))]

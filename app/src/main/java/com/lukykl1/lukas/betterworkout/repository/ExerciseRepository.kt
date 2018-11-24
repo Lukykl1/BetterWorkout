@@ -19,4 +19,8 @@ class ExerciseRepository constructor(private val exerciseDao: ExerciseDao) : IEx
     override suspend fun insert(exercise: Exercise) {
         exerciseDao.insert(exercise)
     }
+
+    fun allExerciseForWorkout(workoutId: Long): LiveData<List<Exercise>> {
+        return exerciseDao.getAllForWorkout(workoutId)
+    }
 }
