@@ -21,7 +21,7 @@ interface WorkoutDao : BaseDao<Workout> {
     @Query("SELECT * FROM Workout")
     fun getLiveAll(): LiveData<List<Workout>>
 
-    @Query("SELECT * FROM workout")
+    @Query("SELECT * FROM workout order by start desc")
     fun getLiveAllWithExercise(): LiveData<List<WorkoutWithExercises>>
 
     @Query("SELECT * FROM workout where uid = :workoutId")

@@ -15,9 +15,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:text="Weigth:"
             app:layout_constraintBottom_toBottomOf="@+id/Weigth"
+            app:layout_constraintEnd_toStartOf="@+id/Weigth"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="19dp"
@@ -29,10 +30,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:ems="10"
+            android:layout_marginEnd="8dp"
+            android:ems="4"
             android:inputType="numberDecimal"
             android:singleLine="false"
             android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/RepsText"
             app:layout_constraintStart_toEndOf="@+id/weigthtext"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="46dp"
@@ -45,9 +48,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:text="Reps:"
             app:layout_constraintBottom_toBottomOf="@+id/Weigth"
+            app:layout_constraintEnd_toStartOf="@+id/Reps"
             app:layout_constraintStart_toEndOf="@+id/Weigth"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="19dp"
@@ -60,7 +64,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:ems="10"
+            android:ems="4"
             android:inputType="number"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,5 +73,32 @@
             tools:layout_conversion_absoluteHeight="46dp"
             tools:layout_conversion_absoluteWidth="1dp"
             tools:text="15" />
+
+        <EditText
+            android:id="@+id/descriptionView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Reps"
+            tools:text="Description" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Reps"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

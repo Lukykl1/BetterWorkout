@@ -22,10 +22,13 @@
     <fragment
         android:id="@+id/exerciseListFragment"
         android:name="com.lukykl1.lukas.betterworkout.ExerciseListFragment"
-        android:label="exercise_list_fragment"
+        android:label="Workout detail"
         tools:layout="@layout/exercise_list_fragment">
         <argument
             android:name="WorkoutId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_exerciseListFragment_to_home_dest"
+            app:destination="@id/home_dest" />
     </fragment>
 </navigation>

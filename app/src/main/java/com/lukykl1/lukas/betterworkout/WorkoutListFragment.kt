@@ -44,6 +44,7 @@ class WorkoutListFragment : Fragment() {
             // Update the cached copy of the words in the adapter.
             workout?.let { adapter.setWorkout(it) }
         })
+
         fab.setOnClickListener {
             GlobalScope.launch {
                 val newId = workoutListViewModel.insert(Workout(0, "Workout", Date(), null))

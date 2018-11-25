@@ -10,6 +10,13 @@ interface IExerciseRepository {
     val allExercise: LiveData<List<Exercise>>
     @WorkerThread
     suspend fun insert(exercise: Exercise)
+
+    @WorkerThread
+    fun update(exercise: Exercise)
+
+    fun allExerciseForWorkout(workoutId: Long): LiveData<List<Exercise>>
+    @WorkerThread
+    fun delete(exercise: Exercise)
 }
 
 class ExerciseRepository constructor(private val exerciseDao: ExerciseDao) : IExerciseRepository {
@@ -20,7 +27,17 @@ class ExerciseRepository constructor(private val exerciseDao: ExerciseDao) : IEx
         exerciseDao.insert(exercise)
     }
 
-    fun allExerciseForWorkout(workoutId: Long): LiveData<List<Exercise>> {
+    override fun allExerciseForWorkout(workoutId: Long): LiveData<List<Exercise>> {
         return exerciseDao.getAllForWorkout(workoutId)
+    }
+
+    @WorkerThread
+    override fun update(exercise: Exercise) {
+        exerciseDao.update(exercise)
+    }
+
+    @WorkerThread
+    override fun delete(exercise: Exercise) {
+        exerciseDao.delete(exercise)
     }
 }

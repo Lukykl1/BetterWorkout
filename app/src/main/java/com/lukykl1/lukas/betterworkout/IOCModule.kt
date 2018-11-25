@@ -7,6 +7,7 @@ import com.lukykl1.lukas.betterworkout.repository.SetRepository
 import com.lukykl1.lukas.betterworkout.repository.WorkoutRepository
 import com.lukykl1.lukas.betterworkout.viewmodel.ExerciseListViewModel
 import com.lukykl1.lukas.betterworkout.viewmodel.SetListViewModel
+import com.lukykl1.lukas.betterworkout.viewmodel.WorkoutJsonViewModel
 import com.lukykl1.lukas.betterworkout.viewmodel.WorkoutListViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.ext.koin.viewModel
@@ -37,6 +38,7 @@ val IOCModule = module {
         WorkoutRepository(get())
     }
     viewModel { ExerciseListViewModel(get(), get()) }
+    viewModel { WorkoutJsonViewModel(get(), get()) }
 
     viewModel { WorkoutListViewModel(get()) }
     viewModel { SetListViewModel(get()) }

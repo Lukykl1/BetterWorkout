@@ -12,6 +12,9 @@ interface ISetRepository {
 
     @WorkerThread
     suspend fun update(set: com.lukykl1.lukas.betterworkout.database.models.Set)
+
+    @WorkerThread
+    suspend fun delete(set: com.lukykl1.lukas.betterworkout.database.models.Set)
 }
 
 class SetRepository constructor(private val setDao: SetDao) : ISetRepository {
@@ -29,5 +32,10 @@ class SetRepository constructor(private val setDao: SetDao) : ISetRepository {
     @WorkerThread
     override suspend fun update(set: com.lukykl1.lukas.betterworkout.database.models.Set) {
         setDao.update(set)
+    }
+
+    @WorkerThread
+    override suspend fun delete(set: com.lukykl1.lukas.betterworkout.database.models.Set) {
+        setDao.delete(set)
     }
 }

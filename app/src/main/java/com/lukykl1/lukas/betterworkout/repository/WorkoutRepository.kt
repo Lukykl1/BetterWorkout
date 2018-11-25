@@ -17,6 +17,9 @@ interface IWorkoutRepository {
 
     @WorkerThread
     fun update(workout: Workout?)
+
+    @WorkerThread
+    fun delete(workout: Workout)
 }
 
 class WorkoutRepository constructor(private val workoutDao: WorkoutDao) : IWorkoutRepository {
@@ -38,5 +41,10 @@ class WorkoutRepository constructor(private val workoutDao: WorkoutDao) : IWorko
         if (workout != null) {
             workoutDao.update(workout)
         }
+    }
+
+    @WorkerThread
+    override fun delete(workout: Workout) {
+        workoutDao.delete(workout)
     }
 }

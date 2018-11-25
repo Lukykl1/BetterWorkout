@@ -2,6 +2,7 @@ package com.lukykl1.lukas.betterworkout
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
@@ -11,11 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lukykl1.lukas.betterworkout.database.models.Exercise
 import com.lukykl1.lukas.betterworkout.database.models.Set
 import com.lukykl1.lukas.betterworkout.databinding.RecyclerviewExerciseItemBinding
+import com.lukykl1.lukas.betterworkout.viewmodel.ExerciseListViewModel
 import com.lukykl1.lukas.betterworkout.viewmodel.SetListViewModel
 
 
 class ExerciseListAdapter internal constructor(
-    val context: Context, val setListViewModel: SetListViewModel, val owner: LifecycleOwner
+    val context: Context,
+    val setListViewModel: SetListViewModel,
+    val exerciseListViewModel: ExerciseListViewModel,
+    val owner: LifecycleOwner
 ) : RecyclerView.Adapter<ExerciseListAdapter.ExerciseViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
@@ -53,8 +58,18 @@ class ExerciseListAdapter internal constructor(
             )
             setListViewModel.insert(set)
         }
-
-
+        holder.binding.deleteExercise.setOnClickListener {
+            exerciseListViewModel.delete(exercise)
+        }
+        holder.binding.editText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                val converted = holder.binding.editText.text.toString()
+                if (converted != exercise.name) {
+                    exercise.name = holder.binding.editText.text.toString()
+                    exerciseListViewModel.updateExercise(exercise)
+                }
+            }
+        }
     }
 
     internal fun setExercise(exercises: List<Exercise>) {

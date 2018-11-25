@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,9 +14,7 @@
             type="com.lukykl1.lukas.betterworkout.WorkoutListAdapter.EventHandler" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -38,7 +38,7 @@
                 android:text="@{workoutWithExercises.workout.name}"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/shareButton"
                 app:layout_constraintStart_toEndOf="@+id/Date"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Workout 1" />
@@ -67,6 +67,19 @@
                 app:layout_constraintEnd_toEndOf="@+id/Date"
                 app:layout_constraintStart_toStartOf="@+id/Date"
                 app:layout_constraintTop_toBottomOf="@+id/Date" />
+
+            <ImageButton
+                android:id="@+id/shareButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="@{(theView) -> eventHandler.share(theView,  workoutWithExercises.workout.uid)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="?attr/actionModeShareDrawable" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

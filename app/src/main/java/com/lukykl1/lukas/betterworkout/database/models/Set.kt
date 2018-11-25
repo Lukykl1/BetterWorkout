@@ -9,7 +9,8 @@ import androidx.room.PrimaryKey
     foreignKeys = [(ForeignKey(
         entity = Exercise::class,
         parentColumns = ["uid"],
-        childColumns = ["exerciseId"]
+        childColumns = ["exerciseId"],
+        onDelete = ForeignKey.CASCADE
     ))]
 )
 data class Set(

@@ -10,7 +10,7 @@ import com.lukykl1.lukas.betterworkout.database.models.Set
 
 @Database(
     entities = [Category::class, Exercise::class, ExerciseType::class, Set::class, SuperSetExercise::class, Workout::class],
-    version = 4
+    version = 5
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {

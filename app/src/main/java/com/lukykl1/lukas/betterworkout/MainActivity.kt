@@ -11,6 +11,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.lukykl1.lukas.betterworkout.viewmodel.WorkoutJsonViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         const val newExerciseActivityRequestCode = 1
     }
 
+    private val workoutJsonViewModel: WorkoutJsonViewModel by viewModel()
 
     private var drawerLayout: DrawerLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +35,24 @@ class MainActivity : AppCompatActivity() {
         // Set up Action Bar
         val navController = host.navController
         setupActionBar(navController)
+
+        when {
+            intent?.action == Intent.ACTION_SEND -> {
+                if ("application/workout" == intent.type) {
+                    workoutJsonViewModel.insertNewWorkout(intent.getStringExtra(Intent.EXTRA_TEXT))
+                }
+            }
+            intent?.action == Intent.ACTION_VIEW -> {
+                val uriToFile = intent.data!!
+                val stream = contentResolver.openInputStream(uriToFile)
+                val contents = java.util.Scanner(stream).useDelimiter("\\A").next()
+                stream?.close()
+                workoutJsonViewModel.insertNewWorkout(contents)
+
+            }
+        }
     }
+
 
     private fun setupActionBar(navController: NavController) {
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -44,10 +64,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.quit_dest -> {
+                this.finish()
+                System.exit(0)
+                return true
+            }
+        }
         return item.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
                 || super.onOptionsItemSelected(item)
     }
-
     override fun onSupportNavigateUp(): Boolean {
         // Allows NavigationUI to support proper up navigation or the drawer layout
         // drawer menu, depending on the situation

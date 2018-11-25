@@ -7,10 +7,7 @@ import com.lukykl1.lukas.betterworkout.database.models.Exercise
 import com.lukykl1.lukas.betterworkout.database.models.Workout
 import com.lukykl1.lukas.betterworkout.repository.ExerciseRepository
 import com.lukykl1.lukas.betterworkout.repository.WorkoutRepository
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class ExerciseListViewModel(
     private val repository: ExerciseRepository,
@@ -34,7 +31,9 @@ class ExerciseListViewModel(
     fun setWorkoutId(workoutId: Long, workoutNameView: EditText) {
         GlobalScope.launch {
             this@ExerciseListViewModel.workout = getWorkout(workoutId).await()
-            workoutNameView.setText(this@ExerciseListViewModel.workout?.name)
+            CoroutineScope(Dispatchers.Main).launch {
+                workoutNameView.setText(this@ExerciseListViewModel.workout?.name)
+            }
         }
     }
 
@@ -46,5 +45,23 @@ class ExerciseListViewModel(
 
     fun getExercisesForWorkout(workoutId: Long): LiveData<List<Exercise>> {
         return repository.allExerciseForWorkout(workoutId)
+    }
+
+    fun updateExercise(exercise: Exercise) {
+        GlobalScope.launch {
+            repository.update(exercise)
+        }
+    }
+
+    fun delete(exercise: Exercise) {
+        GlobalScope.launch {
+            repository.delete(exercise)
+        }
+    }
+
+    fun deleteById(workoutId: Long) {
+        GlobalScope.launch {
+            workoutRepository.delete(getWorkout(workoutId).await())
+        }
     }
 }
