@@ -32,6 +32,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:ems="4"
+            android:hint="100"
             android:inputType="numberDecimal"
             android:singleLine="false"
             android:textSize="12sp"
@@ -65,6 +66,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:ems="4"
+            android:hint="10"
             android:inputType="number"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,9 +81,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:ems="10"
+            android:hint="description..."
             android:inputType="textPersonName"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -99,6 +101,19 @@
             app:layout_constraintTop_toBottomOf="@+id/Reps"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="#DADADA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionView"
+            app:layout_constraintVertical_bias="0.428" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -9,16 +9,16 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.lukykl1.lukas.betterworkout.viewmodel.WorkoutJsonViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        const val newExerciseActivityRequestCode = 1
-    }
 
     private val workoutJsonViewModel: WorkoutJsonViewModel by viewModel()
 
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         // Set up Action Bar
         val navController = host.navController
         setupActionBar(navController)
-
+        setupNavigationMenu(navController)
         when {
             intent?.action == Intent.ACTION_SEND -> {
                 if ("application/workout" == intent.type) {
@@ -51,6 +51,11 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    private fun setupNavigationMenu(navController: NavController) {
+        val sideNavView = findViewById<NavigationView>(R.id.bottom_nav_view)
+        sideNavView?.setupWithNavController(navController)
     }
 
 
@@ -74,10 +79,16 @@ class MainActivity : AppCompatActivity() {
         return item.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
                 || super.onOptionsItemSelected(item)
     }
+
+    fun quitClicked(item: MenuItem) {
+        this.finish()
+        System.exit(0)
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         // Allows NavigationUI to support proper up navigation or the drawer layout
         // drawer menu, depending on the situation
-        return findNavController(R.id.my_nav_host_fragment).navigateUp()
+        return findNavController(R.id.my_nav_host_fragment).navigateUp(drawerLayout)
     }
 }
 

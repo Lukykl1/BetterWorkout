@@ -18,6 +18,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_home_dest_to_aboutFragment"
+            app:destination="@id/fragment_about" />
     </fragment>
     <fragment
         android:id="@+id/exerciseListFragment"
@@ -31,4 +34,12 @@
             android:id="@+id/action_exerciseListFragment_to_home_dest"
             app:destination="@id/home_dest" />
     </fragment>
+    <action
+        android:id="@+id/action_global_home_dest"
+        app:destination="@id/home_dest" />
+    <fragment
+        android:id="@+id/fragment_about"
+        android:name="com.lukykl1.lukas.betterworkout.AboutFragment"
+        android:label="About app"
+        tools:layout="@layout/fragment_about" />
 </navigation>

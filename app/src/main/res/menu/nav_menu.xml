@@ -17,8 +17,13 @@
             android:icon="@drawable/ic_home"
             android:title="@string/home" />
         <item
+            android:id="@+id/fragment_about"
+            android:icon="@drawable/ic_help"
+            android:title="about" />
+        <item
             android:id="@+id/quit_dest"
             android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:onClick="quitClicked"
             android:title="quit" />
     </group>
 </menu>
